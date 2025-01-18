@@ -1,0 +1,302 @@
+[
+    {
+        "tokenAddress": "14MwosYTqp4jKDUaB1nSAyvnzhcBDV5aTiZPz3fzLdya",
+        "details": {
+            "symbol": "MojaMoja",
+            "marketCap": 3701,
+            "liquidity": 4425.13,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "EjMzcb1j3w9SSxt6qg1UTR1s18jGfiTDeadiMzrhpump",
+        "details": {
+            "symbol": "cybertruck",
+            "marketCap": 126599,
+            "liquidity": 42395.79,
+            "created_at": "15 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "EJZGGNUU988gVJ26G1ZPg6KU3AuLt7hzdzPXa9qxpump",
+        "details": {
+            "symbol": "Flusto",
+            "marketCap": 4836,
+            "liquidity": 8242.88,
+            "created_at": "18 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "GsK7FB541W95uMSdDhgAFgZZQ59FBtUE1gQjYQWRivor",
+        "details": {
+            "symbol": "$KM",
+            "marketCap": 893138242,
+            "liquidity": 272131.29,
+            "created_at": "26 min",
+            "is_boosted": "Yes"
+        }
+    },
+    {
+        "tokenAddress": "o6wqkYfRQ2vaAtrYYxZXDE2DhJq13gmepLthpjcpump",
+        "details": {
+            "symbol": "FISH ",
+            "marketCap": 209,
+            "liquidity": 315.05,
+            "created_at": "37 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "0xA9FB265261cA5bE0ba37459b9D70ec0ad0675e5B",
+        "details": {
+            "symbol": "GLYPH",
+            "marketCap": 123411,
+            "liquidity": 52632.15,
+            "created_at": "1405 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "5X7W5EvrqZsruKwaFBDyGN6a1JiVBHD9gfPBiUfmdVZ8",
+        "details": {
+            "symbol": "Apology ",
+            "marketCap": 5786,
+            "liquidity": 7346.43,
+            "created_at": "26 min",
+            "is_boosted": "Yes"
+        }
+    },
+    {
+        "tokenAddress": "98zkyV2UYLtZ9xNeBvzvAKLof8MGaMKFKsReKrixpump",
+        "details": {
+            "symbol": "MAGPU",
+            "marketCap": 31059,
+            "liquidity": 21608.79,
+            "created_at": "37 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "8KHunaaGFxoGPjfYWVvHUGuJYczRTRKRAetMXiYHpump",
+        "details": {
+            "symbol": "Boba",
+            "marketCap": 11114889,
+            "liquidity": 74549.27,
+            "created_at": "46 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "2NqXgLLF5XRJz3Vzrz43F2Pm7TNh3jwa3MhCz5Qxpump",
+        "details": {
+            "symbol": "HopCat",
+            "marketCap": 258,
+            "liquidity": 348.6,
+            "created_at": "50 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "B6fmdKB7FJayAA1VwGyXkXRV6A4ChP8VuNAb74k6MVSS",
+        "details": {
+            "symbol": "ORACLE",
+            "marketCap": 1058794,
+            "liquidity": 8576.08,
+            "created_at": "31 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "4iizMdH35hjyYjuYgRvGyTAbDEpaKWRZt3dXgBv464nN",
+        "details": {
+            "symbol": "SATOSHI",
+            "marketCap": 693484,
+            "liquidity": 3961.46,
+            "created_at": "39 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "7a2hEzUqNUpUe5B1xm4TaxHc1ZY4NjWAeMwTHz6x1her",
+        "details": {
+            "symbol": "morty",
+            "marketCap": 140887,
+            "liquidity": 123063.35,
+            "created_at": "41 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "FMRMseEUetqdWcDAMXgAWhYS1ZAMQRVXqybAqv8pump",
+        "details": {
+            "symbol": "NYNA",
+            "marketCap": 887031,
+            "liquidity": 117408.65,
+            "created_at": "50 min",
+            "is_boosted": "Yes"
+        }
+    },
+    {
+        "tokenAddress": "2RSRPHueUn2FFYSHhnAdX8gwddZBhzCwpuNtiw59pump",
+        "details": {
+            "symbol": "MATT",
+            "marketCap": 188804,
+            "liquidity": 54150.4,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "CsiQYPTAxVhpZs2hbBtFJirD8X8A5M6gPPtMpEJYby6M",
+        "details": {
+            "symbol": "OGAI",
+            "marketCap": 2949,
+            "liquidity": 0,
+            "created_at": "51 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "CNFB5pzckd4SXANLJCLBD4yPFJ6auoJa7XuYkXhfajtx",
+        "details": {
+            "symbol": "1231",
+            "marketCap": 11127817,
+            "liquidity": 450897.87,
+            "created_at": "40 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "CRZei6MF7AcdSKdGqeQHJwyrqw6pHk2DUfaMtXCCpump",
+        "details": {
+            "symbol": "TIGO",
+            "marketCap": 164,
+            "liquidity": 265.03,
+            "created_at": "57 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "HuLbEdfrL92YhCwxQqkhoV6UrUDmBPdivwjNYoeQZ6LP",
+        "details": {
+            "symbol": "lolcat",
+            "marketCap": 128,
+            "liquidity": 0,
+            "created_at": "57 min",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "BPCKvcnY46ghaAh48hZsTsNJiaiNT9fYCk5NugyTpump",
+        "details": {
+            "symbol": "MATT",
+            "marketCap": 6749,
+            "liquidity": 10807.82,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "ErS4Vo6SNzzDUVbFBYJAwzTsLTiNoHQi6vCqZZ9Rc9uU",
+        "details": {
+            "symbol": "JokeBear",
+            "marketCap": 0,
+            "liquidity": 0,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "GjDLByt73rUhVKYrYuYUWrW5Tnbz37sm7Uu8K9H5GM5U",
+        "details": {
+            "symbol": "alien4ever",
+            "marketCap": 164930,
+            "liquidity": 54361.1,
+            "created_at": "41 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "CF7b6RUVDaCY7NiLVBUHDHxjghkB7yCLqVKEep1tpump",
+        "details": {
+            "symbol": "111",
+            "marketCap": 29925,
+            "liquidity": 20991.71,
+            "created_at": "1 hr",
+            "is_boosted": "Yes"
+        }
+    },
+    {
+        "tokenAddress": "DnkGffSTnNW3kok9dpMkWkrmDrqU4fErZP1MeBhUpump",
+        "details": {
+            "symbol": "ai16zSCYCL",
+            "marketCap": 70395,
+            "liquidity": 31895.26,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "3zV2VwDwWdXZybCdc6EQMrcwUuKhpEGPaw1k61t1L8YN",
+        "details": {
+            "symbol": "DOGIUS",
+            "marketCap": 4,
+            "liquidity": 0.63,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "EGXE6rBFFpuxKFbmJMB3sfnM4Y7BqjcWkZZkt46Vpump",
+        "details": {
+            "symbol": "FROGGY",
+            "marketCap": 14061,
+            "liquidity": 15029.86,
+            "created_at": "1 hr",
+            "is_boosted": "Yes"
+        }
+    },
+    {
+        "tokenAddress": "7ShqJoYZjzDhRSNajHQf5nYjq7Zv6q4NKNETgvpWpump",
+        "details": {
+            "symbol": "MATTHEW",
+            "marketCap": 14573,
+            "liquidity": 15953.2,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "A59GyvX24LSQqwNNwfdfMAuiMyF3JKhpFqXyfS37P2f3",
+        "details": {
+            "symbol": "matthew",
+            "marketCap": 203219,
+            "liquidity": 59225.41,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "GRmiQNSV66fT4TqBhscRFMUKPbmpUXmrct8CJGt58e7p",
+        "details": {
+            "symbol": "TATE",
+            "marketCap": 14675131276,
+            "liquidity": 1102924.79,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    },
+    {
+        "tokenAddress": "FDeEYw1RSqxJ631R45EKsTpQLd6jcAwgezuGKdnzDLSZ",
+        "details": {
+            "symbol": "MERMAIDMAN",
+            "marketCap": 0,
+            "liquidity": 0,
+            "created_at": "1 hr",
+            "is_boosted": "No"
+        }
+    }
+]
