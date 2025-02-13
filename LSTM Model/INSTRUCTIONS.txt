@@ -1,0 +1,14 @@
+0) install python lol
+
+1) need to run the following commands:
+
+pip install yfinance
+pip install torch torchvision torchaudio
+pip install scikit-learn
+pip install matplotlib
+
+
+2) then, in the LSTM Model directory, run one of the two commands (whichever works for you):
+
+python run.py
+py run.py

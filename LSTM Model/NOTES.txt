@@ -1,0 +1,2 @@
+-The 'LSTM Model' folder probably goes inside the 'server' folder right? It can be moved later as needed.
+-
