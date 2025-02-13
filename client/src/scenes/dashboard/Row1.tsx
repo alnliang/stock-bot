@@ -1,5 +1,6 @@
 import BoxHeader from '@/components/BoxHeader';
 import DashboardBox from '@/components/DashboardBox'
+import TopStocks from "@/components/TopStocks";
 import { useGetKpisQuery, useGetPairsQuery } from '@/state/api'
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from '@mui/x-data-grid';
@@ -116,7 +117,9 @@ const Row1 = (props: Props) => {
           />
         </Box> */}
         </DashboardBox>
-        <DashboardBox gridArea="b"></DashboardBox>
+        <DashboardBox gridArea="b">
+          <TopStocks />
+        </DashboardBox>
         <DashboardBox gridArea="c"></DashboardBox>
         {/* <DashboardBox gridArea="d"></DashboardBox> */}
         </>
