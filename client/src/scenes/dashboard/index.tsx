@@ -49,7 +49,14 @@ const gridTemplateSmallScreens = `
   "h"
 `;
 
-const Dashboard = () => {
+interface Props {
+  stockData?: ApiResponse;
+  searchResults?: TimeSeriesData[] | null;
+  handleSearch: (query: string) => void;
+  handleBack: () => void;
+}
+
+const Dashboard = ({ stockData, searchResults, handleSearch, handleBack }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
   return (
     <Box
@@ -71,7 +78,12 @@ const Dashboard = () => {
             }
       }
     >
-      <Row1 />
+      <Row1 
+        stockData={stockData} 
+        searchResults={searchResults}
+        handleSearch={handleSearch}
+        handleBack={handleBack}
+      />
       <Row2 />
     </Box>
   );

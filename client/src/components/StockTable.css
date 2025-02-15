@@ -1,0 +1,104 @@
+.stock-table {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-container {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  background-color: #2d2d34;
+  color: #ffffff;
+}
+
+.search-button, .back-button {
+  padding: 8px 16px;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #2d2d34;
+  color: #8884d8;
+  min-width: 80px;
+}
+
+.search-button:hover, .back-button:hover {
+  background-color: #48494e;
+}
+
+.table-container {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  background-color: #2d2d34;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.table-container::-webkit-scrollbar {
+  display: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #2d2d34;
+  color: #8884d8;
+  padding: 12px;
+  font-weight: normal;
+  text-align: left;
+  border-bottom: 1px solid #404040;
+  height: 50px;
+  z-index: 1;
+}
+
+td {
+  padding: 8px 12px;
+  border: none;
+}
+
+tr {
+  height: 40px; /* Fixed row height */
+}
+
+tr.positive {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+tr.negative {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+tr:hover {
+  background-color: rgba(136, 132, 216, 0.1);
+}
+
+/* Rest of your StockTable specific styles */ 
