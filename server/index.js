@@ -33,6 +33,10 @@ app.use("/pairs", pairRoutes);
 // app.use("/transaction", transactionRoutes);
 app.use("/newapi", newApiRoutes);
 
+app.get('/api/news', async (req, res) => {
+  
+});
+
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 9000;
 mongoose
