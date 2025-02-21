@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "finance": "node finance-news.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
