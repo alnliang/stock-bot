@@ -12,11 +12,9 @@ import { useGetStockGainersQuery, useGetStockSearchQuery } from "@/state/api";
 function App() {
   const theme = createTheme(themeSettings);
 
-  // Stock Data (Using Redux Toolkit Query)
   const { data: stockData, isLoading, error } = useGetStockGainersQuery();
   console.log('Gainers API:', { isLoading, error, data: stockData });
 
-  // Search Handling
   const [searchQuery, setSearchQuery] = useState("");
   const { data: searchResults } = useGetStockSearchQuery(searchQuery, {
     skip: !searchQuery,

@@ -45,7 +45,7 @@
   cursor: pointer;
   font-size: 14px;
   background-color: #2d2d34;
-  color: #8884d8;  /* Light purple to match headers */
+  color: #8884d8;
   min-width: 80px;
 }
 
@@ -56,30 +56,29 @@
 .table-container {
   height: 300px;
   overflow-y: auto;
-  overflow-x: auto; /* Add horizontal scroll */
+  overflow-x: auto;
   border: 1px solid #404040;
   border-radius: 8px;
   margin-top: 0;
   scrollbar-width: none;
   background-color: #2d2d34;
-  white-space: nowrap; /* Prevent table from wrapping */
+  white-space: nowrap;
 }
 
-/* WebKit browsers (Chrome, Safari) */
 .table-container::-webkit-scrollbar {
   display: none;
 }
 
 table {
   width: 100%;
-  min-width: 600px; /* Ensure it doesn't get too small */
+  min-width: 600px;
   border-collapse: collapse;
-  table-layout: fixed; /* Ensures columns don't auto-expand */
+  table-layout: fixed;
 }
 
 th {
   background-color: #2d2d34;
-  color: #8884d8;  /* Light purple for headers */
+  color: #8884d8;
   padding: 12px;
   font-weight: normal;
   border: none;
@@ -91,12 +90,12 @@ td {
 }
 
 .positive {
-  background-color: rgba(0, 255, 0, 0.2);  /* Semi-transparent green */
+  background-color: rgba(0, 255, 0, 0.2);
   color: #ffffff;
 }
 
 .negative {
-  background-color: rgba(255, 0, 0, 0.2);  /* Semi-transparent red */
+  background-color: rgba(255, 0, 0, 0.2);
   color: #ffffff;
 }
 

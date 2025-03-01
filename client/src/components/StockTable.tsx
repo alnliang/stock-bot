@@ -18,11 +18,11 @@ const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, on
     e.preventDefault();
     if (searchQuery.trim()) {
       onSearch(searchQuery.trim());
-      setSearchQuery(''); // Clear input after search
+      setSearchQuery('');
     }
   };
-  const rowHeight = 40; // px per data row
-  const headerHeight = 50; // px
+  const rowHeight = 40;
+  const headerHeight = 50;
   const maxBodyHeight = `${5 * rowHeight + headerHeight +10}px`;
 
   return (

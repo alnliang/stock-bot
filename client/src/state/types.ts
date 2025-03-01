@@ -21,6 +21,12 @@ export interface ApiResponse {
   top_gainers: StockData[];
 }
 
+export interface TimeSeriesResponse {
+  "Time Series (5min)": {
+    [key: string]: TimeSeriesData;
+  };
+}
+
 export interface ExpensesByCategory {
   salaries: number;
   supplies: number;

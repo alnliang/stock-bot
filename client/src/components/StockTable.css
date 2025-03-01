@@ -86,7 +86,7 @@ td {
 }
 
 tr {
-  height: 40px; /* Fixed row height */
+  height: 40px;
 }
 
 tr.positive {
@@ -100,5 +100,3 @@ tr.negative {
 tr:hover {
   background-color: rgba(136, 132, 216, 0.1);
 }
-
-/* Rest of your StockTable specific styles */ 

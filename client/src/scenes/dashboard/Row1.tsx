@@ -1,12 +1,11 @@
-import BoxHeader from '@/components/BoxHeader';
-import DashboardBox from '@/components/DashboardBox';
-import StockTable from '@/components/StockTable';
-import { useGetKpisQuery, useGetPairsQuery } from '@/state/api';
+import BoxHeader from "@/components/BoxHeader";
+import DashboardBox from "@/components/DashboardBox";
+import StockTable from "@/components/StockTable";
+import { useGetKpisQuery, useGetPairsQuery } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
-import { useState } from 'react';
-import { ApiResponse, TimeSeriesData } from '@/types/StockTypes';
-import { MOCK_DATA, MOCK_SEARCH_DATA } from "@/data/mockData";
-
+import { useState } from "react";
+import { ApiResponse, TimeSeriesData } from "@/state/types";
+//import { MOCK_DATA, MOCK_SEARCH_DATA } from "@/data/mockData";
 
 interface Props {
   stockData?: ApiResponse;
@@ -28,7 +27,6 @@ const Row1 = (props: Props) => {
     setLocalSearching(false);
   };
 
-  // Derive isSearching from both local state and actual results
   const isSearching = localSearching || Boolean(props.searchResults);
 
   return (
@@ -39,15 +37,15 @@ const Row1 = (props: Props) => {
           subtitle="Top gainers and most active stocks"
           sideText={props.stockData?.last_updated || "Loading..."}
         />
-        <Box 
-          width="100%" 
+        <Box
+          width="100%"
           height="100%"
-          padding="1rem" 
-          sx={{ 
+          padding="1rem"
+          sx={{
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            minHeight: 0
+            minHeight: 0,
           }}
         >
           <StockTable
