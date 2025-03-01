@@ -1,9 +1,9 @@
 import BoxHeader from "@/components/BoxHeader";
 import DashboardBox from "@/components/DashboardBox";
 import StockTable from "@/components/StockTable";
-import { useGetKpisQuery, useGetPairsQuery } from "@/state/api";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useState } from "react";
+import { useGetStockGainersQuery, useGetStockSearchQuery} from "@/state/api";
 import { ApiResponse, TimeSeriesData } from "@/state/types";
 //import { MOCK_DATA, MOCK_SEARCH_DATA } from "@/data/mockData";
 
