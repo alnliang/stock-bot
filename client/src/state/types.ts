@@ -4,6 +4,7 @@ export interface StockData {
   change_amount: string;
   change_percentage: string;
   volume: string;
+  isFavorite?: boolean;
 }
 
 export interface TimeSeriesData {

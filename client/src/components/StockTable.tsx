@@ -1,6 +1,9 @@
-import { useState } from 'react';
-import { StockData, TimeSeriesData } from '@/types/StockTypes';
-import './StockTable.css';
+import { useState } from "react";
+import { StockData, TimeSeriesData } from "@/types/StockTypes";
+import "./StockTable.css";
+import { Box, IconButton } from "@mui/material";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import StarIcon from "@mui/icons-material/Star";
 
 interface StockTableProps {
   title: string;
@@ -9,21 +12,30 @@ interface StockTableProps {
   searchResults: TimeSeriesData[] | null;
   isSearching: boolean;
   onBack: () => void;
+  onToggleFavorite: (stock: StockData) => void;
 }
 
-const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, onBack }: StockTableProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
+const StockTable = ({
+  title,
+  data = [],
+  onSearch,
+  searchResults,
+  isSearching,
+  onBack,
+  onToggleFavorite,
+}: StockTableProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       onSearch(searchQuery.trim());
-      setSearchQuery('');
+      setSearchQuery("");
     }
   };
   const rowHeight = 40;
   const headerHeight = 50;
-  const maxBodyHeight = `${5 * rowHeight + headerHeight +10}px`;
+  const maxBodyHeight = `${5 * rowHeight + headerHeight + 10}px`;
 
   return (
     <div className="stock-table">
@@ -37,15 +49,22 @@ const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, on
               placeholder="Search for a stock..."
               className="search-input"
             />
-            <button type="submit" className="search-button">search</button>
+            <button type="submit" className="search-button">
+              search
+            </button>
             {isSearching && (
-              <button type="button" onClick={onBack} className="back-button">back</button>
+              <button type="button" onClick={onBack} className="back-button">
+                back
+              </button>
             )}
           </div>
         </form>
       </div>
 
-      <div className="table-container" style={{ overflow: 'auto' , maxHeight: maxBodyHeight}}>
+      <div
+        className="table-container"
+        style={{ overflow: "auto", maxHeight: maxBodyHeight }}
+      >
         <table>
           <thead>
             <tr>
@@ -66,6 +85,7 @@ const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, on
                   <th>Change</th>
                   <th>Change %</th>
                   <th>Volume</th>
+                  <th>Favorite</th>
                 </>
               )}
             </tr>
@@ -76,10 +96,15 @@ const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, on
                 searchResults.map((stock, index) => {
                   const timeParts = stock.time.split(" ");
                   const time = timeParts.length > 1 ? timeParts[1] : stock.time;
-                  const change = Number(stock["4. close"]) - Number(stock["1. open"]);
-                  const changePercent = (change / Number(stock["1. open"])) * 100;
+                  const change =
+                    Number(stock["4. close"]) - Number(stock["1. open"]);
+                  const changePercent =
+                    (change / Number(stock["1. open"])) * 100;
                   return (
-                    <tr key={index} className={changePercent >= 0 ? "positive" : "negative"}>
+                    <tr
+                      key={index}
+                      className={changePercent >= 0 ? "positive" : "negative"}
+                    >
                       <td>{time}</td>
                       <td>${Number(stock["1. open"]).toFixed(2)}</td>
                       <td>${Number(stock["4. close"]).toFixed(2)}</td>
@@ -91,16 +116,35 @@ const StockTable = ({ title, data = [], onSearch, searchResults, isSearching, on
                   );
                 })
               ) : (
-                <tr><td colSpan={7}>No search results found</td></tr>
+                <tr>
+                  <td colSpan={7}>No search results found</td>
+                </tr>
               )
             ) : (
               data.map((stock) => (
-                <tr key={stock.ticker} className={Number(stock.change_amount) >= 0 ? "positive" : "negative"}>
+                <tr
+                  key={stock.ticker}
+                  className={
+                    Number(stock.change_amount) >= 0 ? "positive" : "negative"
+                  }
+                >
                   <td>{stock.ticker}</td>
                   <td>${stock.price}</td>
                   <td>${stock.change_amount}</td>
                   <td>{stock.change_percentage}</td>
                   <td>{stock.volume}</td>
+                  <td>
+                    <IconButton
+                      onClick={() => onToggleFavorite(stock)}
+                      size="small"
+                    >
+                      {stock.isFavorite ? (
+                        <StarIcon sx={{ color: "gold" }} />
+                      ) : (
+                        <StarBorderIcon />
+                      )}
+                    </IconButton>
+                  </td>
                 </tr>
               ))
             )}

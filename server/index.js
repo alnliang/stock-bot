@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: "http://localhost:5173", // Your Vite dev server port
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
