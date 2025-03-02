@@ -23,7 +23,7 @@ const NewsFeed = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:3001/api/news?page=${pageNum}`);
+      const response = await fetch(`http://localhost:9000/api/news?page=${pageNum}`);
       if (!response.ok) throw new Error('Failed to fetch articles');
       const data = await response.json();
       
