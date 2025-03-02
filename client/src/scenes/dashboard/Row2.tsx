@@ -1,4 +1,5 @@
 import DashboardBox from "@/components/DashboardBox";
+import FinancialNews from "@/components/FinancialNews";
 //import { useGetProductsQuery } from "@/state/api";
 import React from "react";
 
@@ -10,7 +11,9 @@ const Row2 = (props: Props) => {
   return (
     <>
       <DashboardBox gridArea="e"></DashboardBox>
-      <DashboardBox gridArea="f"></DashboardBox>
+      <DashboardBox gridArea="f">
+        <FinancialNews/>
+      </DashboardBox>
       <DashboardBox gridArea="g"></DashboardBox>
       {/* <DashboardBox gridArea="h"></DashboardBox> */}
     </>
