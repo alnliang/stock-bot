@@ -1,24 +1,21 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { ApiResponse, TimeSeriesResponse } from "./types";
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:9000",
+    credentials: "include",
+  }),
   reducerPath: "main",
-  tagTypes: ["Kpis", "Pairs", "NewApi"],
+  tagTypes: ["Stocks"],
   endpoints: (build) => ({
-    getKpis: build.query<void, void>({
-      query: () => "kpi/kpis/",
-      providesTags: ["Kpis"],
+    getStockGainers: build.query<ApiResponse, void>({
+      query: () => "trending/gainers",
     }),
-    getPairs: build.query<void, void>({
-      query: () => "pairs/pairs/",
-      providesTags: ["Pairs"],
-    }),
-    getNewApiData: build.query<void, void>({
-      query: () => "newapi/newapi/",
-      providesTags: ["NewApi"],
-      pollingInterval: 15000,
+    getStockSearch: build.query<TimeSeriesResponse, string>({
+      query: (symbol) => `trending/search/${symbol}`,
     }),
   }),
 });
 
-export const { useGetKpisQuery, useGetPairsQuery, useGetNewApiDataQuery } = api;
+export const { useGetStockGainersQuery, useGetStockSearchQuery } = api;

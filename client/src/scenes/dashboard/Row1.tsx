@@ -1,126 +1,123 @@
-import BoxHeader from '@/components/BoxHeader';
-import DashboardBox from '@/components/DashboardBox'
-import { useGetKpisQuery, useGetPairsQuery } from '@/state/api'
+import BoxHeader from "@/components/BoxHeader";
+import DashboardBox from "@/components/DashboardBox";
+import StockTable from "@/components/StockTable";
 import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from '@mui/x-data-grid';
+import { useState, useEffect } from "react";
+import { useGetStockGainersQuery, useGetStockSearchQuery } from "@/state/api";
+import { ApiResponse, TimeSeriesData } from "@/state/types";
+//import { MOCK_DATA, MOCK_SEARCH_DATA } from "@/data/mockData";
 
-type Props = {};
+interface Props {
+  stockData?: ApiResponse;
+  searchResults?: TimeSeriesData[] | null;
+  handleSearch: (query: string) => void;
+  handleBack: () => void;
+}
 
 const Row1 = (props: Props) => {
-    const { data: pairsData } = useGetPairsQuery();
-    console.log(pairsData);
-    const { palette } = useTheme();
+  const [localSearching, setLocalSearching] = useState(false);
+  const [favorites, setFavorites] = useState<StockData[]>(() => {
+    const saved = localStorage.getItem("favoriteStocks");
+    return saved ? JSON.parse(saved) : [];
+  });
 
-    const columns = [
-      { field: 'symbol', headerName: 'Token', flex: 0.6 },
-      {
-        field: 'marketCap',
-        headerName: 'MC',
-        flex: 0.6,
-        //valueFormatter: (params: any) => formatValue(params.value),
-      },
-      {
-        field: 'liquidity',
-        headerName: 'Liq',
-        flex: 0.6,
-        //valueFormatter: (params: any) => formatValue(params.value),
-      },
-      { field: 'created_at', headerName: 'Age', flex: 0.4 },
-      { field: 'is_boosted', headerName: 'Boosted', flex: 0.4 },
-    ];
+  useEffect(() => {
+    localStorage.setItem("favoriteStocks", JSON.stringify(favorites));
+  }, [favorites]);
 
-    // const formatValue = (value: number | undefined | null): string => {
-    //   if (value == null) return '$0.00';
-    //   if (value >= 1e6) {
-    //     return `${(value / 1e6).toFixed(1)}M`; // Convert to millions with one decimal place
-    //   } else if (value >= 1e3) {
-    //     return `${(value / 1e3).toFixed(1)}K`; // Convert to thousands with one decimal place
-    //   } else {
-    //     return value.toFixed(2); // For values below 1000, show two decimal places
-    //   }
-    // };
+  const handleSearch = (query: string) => {
+    props.handleSearch(query);
+    setLocalSearching(true);
+  };
 
+  const handleBack = () => {
+    props.handleBack();
+    setLocalSearching(false);
+  };
 
-    const rows = (pairsData || []).map((pair: any, index: number) => ({
-      id: index, // Unique ID for each row
-      symbol: pair.details.symbol || 'N/A',
-      marketCap: pair.details.marketCap || 0, // Use raw numeric value
-      liquidity: pair.details.liquidity || 0, // Use raw numeric value
-      created_at: pair.details.created_at || 'N/A',
-      is_boosted: pair.details.is_boosted || 'No',
-    }));
+  const handleToggleFavorite = (stock: StockData) => {
+    setFavorites((prev) => {
+      const exists = prev.some((f) => f.ticker === stock.ticker);
+      if (exists) {
+        return prev.filter((f) => f.ticker !== stock.ticker);
+      } else {
+        return [...prev, { ...stock, isFavorite: true }];
+      }
+    });
+  };
 
-    return (
-      <>
+  const isSearching = localSearching || Boolean(props.searchResults);
+
+  return (
+    <>
       <DashboardBox gridArea="a">
-        {/* <BoxHeader title="Live Token Feed" sideText={`${rows.length} pairs`} />
+        <BoxHeader
+          title="Stock Market Dashboard"
+          subtitle="Top gainers and most active stocks"
+          sideText={props.stockData?.last_updated || "Loading..."}
+        />
         <Box
-          mt="0.5rem"
-          p="0 0.5rem"
-          height="400px"
+          width="100%"
+          height="100%"
+          padding="1rem"
           sx={{
-            "& .MuiDataGrid-root": {
-              color: '#0f0',
-              border: "1px solid #0f0",
-              fontSize: "0.85rem",
-              backgroundColor: '#000',
-              textAlign: "center", // Align text to center
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-              whiteSpace: "nowrap",
-              textAlign: "center", // Center cell text
-            },
-            "& .MuiDataGrid-columnHeaders": {
-              borderBottom: `1px solid #0f0`,
-              backgroundColor: '#111',
-              padding: "0.2rem 0.5rem",
-              fontSize: "0.85rem",
-              textAlign: "center", // Center header text
-            },
-            "& .MuiDataGrid-footerContainer": {
-              display: "none",
-            },
-            "& .MuiDataGrid-row": {
-              minHeight: "25px !important",
-              maxHeight: "25px !important",
-              "&:hover": {
-                backgroundColor: '#006400',
-              },
-            },
-            "& .MuiDataGrid-virtualScroller": {
-              overflow: "hidden",
-              "&::-webkit-scrollbar": {
-                display: "none",
-              },
-              "msOverflowStyle": "none",
-              "scrollbarWidth": "none",
-            },
-            "& .MuiDataGrid-columnSeparator": {
-              display: "none",
-            },
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            minHeight: 0,
           }}
         >
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            hideFooter={true}
-            rowHeight={25}
-            headerHeight={30}
-            disableColumnMenu={true}
-            disableRowSelectionOnClick={true}
-            autoHeight={false}
-            style={{ height: '100%' }}
-            showCellVerticalBorder={false}
-            showColumnVerticalBorder={false}
+          <StockTable
+            title="Stock Market Dashboard"
+            data={
+              props.stockData?.top_gainers?.map((stock) => ({
+                ...stock,
+                isFavorite: favorites.some((f) => f.ticker === stock.ticker),
+              })) || []
+            }
+            onSearch={props.handleSearch}
+            searchResults={props.searchResults}
+            isSearching={isSearching}
+            onBack={handleBack}
+            onToggleFavorite={handleToggleFavorite}
           />
-        </Box> */}
-        </DashboardBox>
-        <DashboardBox gridArea="b"></DashboardBox>
-        <DashboardBox gridArea="c"></DashboardBox>
-        {/* <DashboardBox gridArea="d"></DashboardBox> */}
-        </>
-    );
+        </Box>
+      </DashboardBox>
+      <DashboardBox gridArea="b">
+        <BoxHeader
+          title="Favorite Stocks"
+          subtitle="Your selected stocks"
+          sideText={`${favorites.length} stocks`}
+        />
+        <Box
+          width="100%"
+          height="100%"
+          padding="1rem"
+          sx={{
+            overflow: "auto",
+          }}
+        >
+          <table>
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {favorites.map((stock) => (
+                <tr key={stock.ticker}>
+                  <td>{stock.ticker}</td>
+                  <td>{stock.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Box>
+      </DashboardBox>
+      <DashboardBox gridArea="c"></DashboardBox>
+    </>
+  );
 };
 
 export default Row1;
