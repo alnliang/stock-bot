@@ -1,4 +1,4 @@
-0) install python lol
+0) install python
 
 1) need to run the following commands:
 

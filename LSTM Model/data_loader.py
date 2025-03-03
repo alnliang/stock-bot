@@ -1,15 +1,24 @@
 import yfinance as yf
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
-import torch
 
 def fetch_stock_data(ticker, start_date, end_date):
     """
-    Fetches historical data from Yahoo Finance.
+    Fetches historical data from Yahoo Finance and does a quick sanity check.
     """
     df = yf.download(ticker, start=start_date, end=end_date)
     df.dropna(inplace=True)
+
+    # Basic check for data length and date continuity
+    if df.empty:
+        print(f"[WARNING] fetch_stock_data: No data returned for {ticker} from {start_date} to {end_date}.")
+        return df
+
+    # Warn if the last row date is more than a few days older than 'end_date'
+    actual_end = df.index[-1]
+    if (pd.Timestamp(end_date) - actual_end).days > 7:
+        print(f"[WARNING] fetch_stock_data: Last date in data is {actual_end.date()}, which is more than 7 days before {end_date}.")
+
     return df
 
 def calculate_rsi(data, window=14):
@@ -38,52 +47,38 @@ def add_technical_indicators(df):
     df["SMA_5"] = df["Close"].rolling(window=5).mean()
     df["SMA_20"] = df["Close"].rolling(window=20).mean()
     df["RSI"] = calculate_rsi(df["Close"])
-    df['MACD'], df['MACD_Signal'] = calculate_macd(df['Close'])
-    df['BB_high'], df['BB_low'] = calculate_bollinger_bands(df['Close'])
-    df['EMA_20'] = df['Close'].ewm(span=20, adjust=False).mean()
+    df["MACD"], df["MACD_Signal"] = calculate_macd(df["Close"])
+    df["BB_high"], df["BB_low"] = calculate_bollinger_bands(df["Close"])
+    df["EMA_20"] = df["Close"].ewm(span=20, adjust=False).mean()
 
+    # Fill any remaining NaNs
     df.ffill(inplace=True)
     df.bfill(inplace=True)
     return df
 
 def create_sequences(features, targets, seq_length=50):
+    """
+    Standard sequence creation for an LSTM:
+      - features: shape (N, num_features)
+      - targets:  shape (N,) or (N,1)
+    Returns:
+      X, y as arrays, where each X[i] has shape (seq_length, num_features)
+    """
     X, y = [], []
     for i in range(len(features) - seq_length):
         X.append(features[i : i + seq_length])
         y.append(targets[i + seq_length])
     return np.array(X), np.array(y).reshape(-1, 1)
 
-def prepare_data(ticker, start_date, end_date, seq_length=50):
+def prepare_raw_data(ticker, start_date, end_date):
     """
+    Fetches data and adds technical indicators, but does NOT scale or create sequences.
     Returns:
-      X (torch.FloatTensor): The entire dataset's features (for cross-validation or final split)
-      y (torch.FloatTensor): The entire dataset's targets
-      feature_scaler, target_scaler
+        df (pd.DataFrame) with columns needed for feature construction.
     """
     df = fetch_stock_data(ticker, start_date, end_date)
+    if df.empty:
+        return df  # empty or warning handled upstream
+
     df = add_technical_indicators(df)
-
-    # SELECT FEATURES
-    feature_cols = [
-        "Open", "High", "Low", "Close", "Volume",
-        "SMA_5", "SMA_20", "RSI", "EMA_20",
-        "MACD", "MACD_Signal", "BB_high", "BB_low"
-    ]
-    df_features = df[feature_cols].copy()
-    df_target = df["Close"].copy()
-
-    # SCALE
-    feature_scaler = MinMaxScaler()
-    target_scaler = MinMaxScaler()
-
-    features = feature_scaler.fit_transform(df_features.values)
-    targets = target_scaler.fit_transform(df_target.values.reshape(-1, 1))
-
-    # CREATE SEQUENCES
-    X_all, y_all = create_sequences(features, targets, seq_length)
-
-    # Convert to torch tensors
-    X_all = torch.tensor(X_all, dtype=torch.float32)
-    y_all = torch.tensor(y_all, dtype=torch.float32)
-
-    return X_all, y_all, feature_scaler, target_scaler
+    return df
