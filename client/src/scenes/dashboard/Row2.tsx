@@ -1,5 +1,7 @@
 import DashboardBox from "@/components/DashboardBox";
+import BoxHeader from "@/components/BoxHeader";
 import FinancialNews from "@/components/FinancialNews";
+import StockChart from "@/components/StockChart";
 //import { useGetProductsQuery } from "@/state/api";
 import React from "react";
 
@@ -10,7 +12,14 @@ const Row2 = (props: Props) => {
   // console.log("data:", data);
   return (
     <>
-      <DashboardBox gridArea="e"></DashboardBox>
+      <DashboardBox gridArea="e">
+  <BoxHeader
+    title="Stock Graph"
+    subtitle="Visualizing Market Performance for Stocks"
+    sideText="" // Optional: Add dynamic text like last updated time
+  />
+  <StockChart />
+</DashboardBox>
       <DashboardBox gridArea="f">
         <FinancialNews/>
       </DashboardBox>
