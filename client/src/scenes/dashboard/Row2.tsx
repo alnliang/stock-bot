@@ -1,5 +1,6 @@
 import DashboardBox from "@/components/DashboardBox";
 import RunModelButton from "@/components/TickerPrediction";
+import FinancialNews from "@/components/FinancialNews";
 //import { useGetProductsQuery } from "@/state/api";
 import React from "react";
 
@@ -13,7 +14,9 @@ const Row2 = (props: Props) => {
       <DashboardBox gridArea="e">
         <RunModelButton/>
       </DashboardBox>
-      <DashboardBox gridArea="f"></DashboardBox>
+      <DashboardBox gridArea="f">
+        <FinancialNews/>
+      </DashboardBox>
       <DashboardBox gridArea="g"></DashboardBox>
       {/* <DashboardBox gridArea="h"></DashboardBox> */}
     </>
