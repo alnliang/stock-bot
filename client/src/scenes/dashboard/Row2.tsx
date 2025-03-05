@@ -1,4 +1,5 @@
 import DashboardBox from "@/components/DashboardBox";
+import RunModelButton from "@/components/TickerPrediction";
 //import { useGetProductsQuery } from "@/state/api";
 import React from "react";
 
@@ -9,7 +10,9 @@ const Row2 = (props: Props) => {
   // console.log("data:", data);
   return (
     <>
-      <DashboardBox gridArea="e"></DashboardBox>
+      <DashboardBox gridArea="e">
+        <RunModelButton/>
+      </DashboardBox>
       <DashboardBox gridArea="f"></DashboardBox>
       <DashboardBox gridArea="g"></DashboardBox>
       {/* <DashboardBox gridArea="h"></DashboardBox> */}

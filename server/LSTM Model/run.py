@@ -1,15 +1,17 @@
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import datetime
-
+import os
 from train import train_model
 from test import evaluate_model
 
-def main():
-    ticker = "NVDA"
+def run_app(ticker = "NVDA"):
 
     today = datetime.date.today()
     start_date = (today.replace(year=today.year - 2)).strftime("%Y-%m-%d")
     end_date   = today.strftime("%Y-%m-%d")
+    plot_name = f"{ticker}_{start_date}_to_{end_date}.png"
 
     print(f"Training and evaluating for {ticker}, from {start_date} to {end_date}...")
 
@@ -51,7 +53,22 @@ def main():
         plt.xlabel("Days in Test Portion")
         plt.ylabel("Price")
         plt.legend()
-        plt.show()
+        static_dir = "static"
+        if not os.path.exists(static_dir):
+            os.makedirs(static_dir)
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        static_dir = os.path.join(base_dir, "static")
+        if not os.path.exists(static_dir):
+            os.makedirs(static_dir)
+        plot_path = os.path.join(static_dir, plot_name)
+        plt.savefig(plot_path, transparent=False)
+        plt.savefig(f"static/{plot_name}", transparent=False)
+        plt.close()
+        return {"plot": plot_name, "message": f"Model for {ticker} executed successfully."}
+    else:
+        return {"error": "Evaluation failed or mismatched data length."}
+
 
 if __name__ == "__main__":
-    main()
+    res = run_app()
+    print(res)
