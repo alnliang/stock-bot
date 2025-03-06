@@ -60,7 +60,7 @@ const NewsFeed = () => {
     <Box
       sx={{
         width: "100%",
-        height: "400px",
+        height: "535px",
         overflowY: "auto",
         backgroundColor: "#111",
         borderRadius: "12px",
