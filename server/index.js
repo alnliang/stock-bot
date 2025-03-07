@@ -8,9 +8,8 @@ import morgan from "morgan";
 import stockRoutes from "./routes/trending.js";
 import axios from 'axios';
 
-
-/* CONFIGURATIONS */
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(helmet());
