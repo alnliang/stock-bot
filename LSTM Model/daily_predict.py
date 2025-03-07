@@ -77,7 +77,7 @@ def predict_next_day_price(
 
 if __name__ == "__main__":
     # Example usage:
-    ticker = "NVDA"
+    ticker = "JPM"
     prediction = predict_next_day_price(ticker)
     if prediction is not None:
         print(f"Predicted next-day close for {ticker}: {prediction}")

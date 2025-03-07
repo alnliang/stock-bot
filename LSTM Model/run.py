@@ -5,7 +5,7 @@ from train import train_model
 from test import evaluate_model
 
 def main():
-    ticker = "NVDA"
+    ticker = "JPM"
 
     today = datetime.date.today()
     start_date = (today.replace(year=today.year - 2)).strftime("%Y-%m-%d")
