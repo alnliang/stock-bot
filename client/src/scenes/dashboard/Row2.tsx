@@ -1,4 +1,5 @@
 import DashboardBox from "@/components/DashboardBox";
+import StockChart from "@/components/StockChart";
 import BoxHeader from "@/components/BoxHeader";
 import { Box, Typography } from "@mui/material";
 import FinancialNews from "@/components/FinancialNews";
@@ -112,7 +113,14 @@ const UserInfoSection = () => (
 const Row2 = (props: Props) => {
   return (
     <>
-      <DashboardBox gridArea="e"></DashboardBox>
+      <DashboardBox gridArea="e">
+      <BoxHeader
+        title="Stock Graph"
+        subtitle="Visualizing Market Performance for Stocks"
+        sideText="" // Optional: Add dynamic text like last updated time
+      />
+        <StockChart/>
+      </DashboardBox>
       <DashboardBox gridArea="f">
         <FinancialNews />
       </DashboardBox>
