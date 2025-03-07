@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Box, TextField, Button, Typography } from "@mui/material";
 
 interface CalculationOutput {
   result?: number;
@@ -21,23 +22,85 @@ const CalculateMetricButton: React.FC = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter stock ticker"
-        value={ticker}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setTicker(e.target.value.toUpperCase())
-        }
-      />
-      <button onClick={handleClick}>Calculate Metric</button>
-      {output && output.result !== undefined && (
-        <div>
-          <p>Calculated Result: {output.result}</p>
-        </div>
+    <Box
+      sx={{
+        width: "100%",
+        backgroundColor: "#2d2d34",
+        border: "1px solid #404040",
+        borderRadius: "8px",
+        padding: "16px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "12px",
+      }}
+    >
+      <Box sx={{ display: "flex", gap: "10px", alignItems: "center" }}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Enter stock ticker"
+          value={ticker}
+          onChange={(e) => setTicker(e.target.value.toUpperCase())}
+          sx={{
+            backgroundColor: "#2d2d34",
+            border: "1px solid #404040",
+            borderRadius: "8px",
+            "& .MuiInputBase-input": {
+              color: "#ffffff",
+              fontSize: "14px",
+            },
+          }}
+        />
+        <Button
+          variant="contained"
+          onClick={handleClick}
+          sx={{
+            backgroundColor: "#2d2d34",
+            color: "#8884d8",
+            border: "1px solid #404040",
+            borderRadius: "8px",
+            "&:hover": {
+              backgroundColor: "#48494e",
+            },
+            textTransform: "none",
+            fontWeight: "normal",
+          }}
+        >
+          Calculate Metric
+        </Button>
+      </Box>
+
+      {output && (
+        <Box sx={{ mt: 1 }}>
+          {output.result !== undefined && (
+            <Typography
+              sx={{
+                color: "#00ff00",
+                fontSize: "16px",
+                backgroundColor: "rgba(0, 255, 0, 0.1)",
+                padding: "8px",
+                borderRadius: "4px",
+              }}
+            >
+              Calculated Result: ${output.result.toFixed(2)}
+            </Typography>
+          )}
+          {output.error && (
+            <Typography
+              sx={{
+                color: "#ff0000",
+                fontSize: "16px",
+                backgroundColor: "rgba(255, 0, 0, 0.1)",
+                padding: "8px",
+                borderRadius: "4px",
+              }}
+            >
+              Error: {output.error}
+            </Typography>
+          )}
+        </Box>
       )}
-      {output && output.error && <p>Error: {output.error}</p>}
-    </div>
+    </Box>
   );
 };
 

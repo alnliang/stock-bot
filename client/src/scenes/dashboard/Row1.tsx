@@ -1,6 +1,6 @@
 import BoxHeader from '@/components/BoxHeader';
 import DashboardBox from '@/components/DashboardBox'
-import RunModelButton from "@/components/TickerPrediction";
+import CalculateMetricButton from "@/components/TickerPrediction";
 import StockTable from "@/components/StockTable";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useState, useEffect } from "react";
@@ -117,7 +117,7 @@ const Row1 = (props: Props) => {
         </Box>
       </DashboardBox>
       <DashboardBox gridArea="c">
-        <RunModelButton/>
+        <CalculateMetricButton/>
       </DashboardBox>
     </>
   );
