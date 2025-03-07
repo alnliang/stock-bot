@@ -23,7 +23,7 @@ const NewsFeed = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:3001/api/news?page=${pageNum}`);
+      const response = await fetch(`http://localhost:9000/api/news?page=${pageNum}`);
       if (!response.ok) throw new Error('Failed to fetch articles');
       const data = await response.json();
       
@@ -60,7 +60,7 @@ const NewsFeed = () => {
     <Box
       sx={{
         width: "100%",
-        height: "400px",
+        height: "535px",
         overflowY: "auto",
         backgroundColor: "#111",
         borderRadius: "12px",
@@ -127,5 +127,6 @@ const NewsFeed = () => {
     </Box>
   );
 };
+
 
 export default NewsFeed;
