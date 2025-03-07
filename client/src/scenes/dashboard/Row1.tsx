@@ -1,7 +1,6 @@
 import BoxHeader from '@/components/BoxHeader';
 import DashboardBox from '@/components/DashboardBox'
 import RunModelButton from "@/components/TickerPrediction";
-import { useGetKpisQuery, useGetPairsQuery } from '@/state/api'
 import StockTable from "@/components/StockTable";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useState, useEffect } from "react";
@@ -117,7 +116,9 @@ const Row1 = (props: Props) => {
           </table>
         </Box>
       </DashboardBox>
-      <DashboardBox gridArea="c"></DashboardBox>
+      <DashboardBox gridArea="c">
+        <RunModelButton/>
+      </DashboardBox>
     </>
   );
 };
